@@ -1,0 +1,40 @@
+# Visual Studio 用户缓存与本地配置
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# 编译输出目录
+x64/
+Debug/
+Release/
+Win32/
+ARM64/
+
+# 编译中间文件
+*.obj
+*.pch
+*.pdb
+*.ilk
+*.idb
+*.tlog
+*.ipch
+*.iobj
+*.ipdb
+*.res
+*.log
+*.recipe
+*.lastbuildstate
+*.dll
+*.exe
+*.lib
+*.exp
+
+# 资源编辑器缓存
+*.aps
+
+# 测试与临时文件
+test.jpg
+*.tmp
+Thumbs.db

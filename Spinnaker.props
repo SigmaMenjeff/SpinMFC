@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Spinnaker SDK 路径属性表
+  =================================================================
+  本属性表集中管理 Spinnaker SDK 的 头文件/库文件 路径。
+  若你的 Spinnaker SDK 安装位置不同，只需修改下方 $(SpinnakerSDKRoot)
+  变量的值即可，无需改动 .vcxproj 文件。
+
+  修改方法：将 $(SpinnakerSDKRoot) 的 Value 改为你本机的 SDK 根目录，例如：
+    <SpinnakerSDKRoot>C:\SpinnakerSDK\Spinnaker4.2.0.83</SpinnakerSDKRoot>
+
+  注意：
+  - 路径统一使用反斜杠 \，结尾不要带斜杠
+  - 仅对 x64 平台生效（项目的 Spinnaker 配置基于 x64 构建）
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup Label="UserMacros">
+    <!-- ★★★ 在此处修改为你本机的 Spinnaker SDK 根目录 ★★★ -->
+    <SpinnakerSDKRoot>E:\SpinnakerSDK\Spinnaker4.2.0.83</SpinnakerSDKRoot>
+  </PropertyGroup>
+
+  <!-- ================= 仅对 x64 平台生效 ================= -->
+  <ItemDefinitionGroup Condition="'$(Platform)'=='x64'">
+    <ClCompile>
+      <!-- 头文件包含目录 -->
+      <AdditionalIncludeDirectories>
+        $(SpinnakerSDKRoot)\include\SpinGenApi;
+        $(SpinnakerSDKRoot)\include\spinc;
+        $(SpinnakerSDKRoot)\include\Interface;
+        $(SpinnakerSDKRoot)\include\GUI;
+        $(SpinnakerSDKRoot)\include;
+        %(AdditionalIncludeDirectories)
+      </AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <!-- 库文件附加目录 -->
+      <AdditionalLibraryDirectories>
+        $(SpinnakerSDKRoot)\lib64\vs2015;
+        $(SpinnakerSDKRoot)\lib64\vs2017;
+        %(AdditionalLibraryDirectories)
+      </AdditionalLibraryDirectories>
+      <!-- 附加依赖项（链接库） -->
+      <AdditionalDependencies>
+        $(SpinnakerSDKRoot)\lib64\vs2015\SpinVideo_v140.lib;
+        Spinnaker_v140.lib;
+        strmiids.lib;
+        uuid.lib;
+        %(AdditionalDependencies)
+      </AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+
+</Project>
